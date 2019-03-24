@@ -17,3 +17,13 @@ def handle_errors(func):
             _error(traceback.format_exc(limit=1))
             raise click.Abort()
     return wrapper
+
+
+def subcommands(commands):
+    def decorator(func):
+        commands(func)
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            func(*args, **kwargs)
+        return wrapper
+    return decorator
