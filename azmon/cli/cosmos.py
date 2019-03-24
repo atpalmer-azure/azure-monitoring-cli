@@ -6,6 +6,13 @@ def commands(group):
     @group.command()
     @click.pass_obj
     @clicktools.handle_result
+    def requests(metrics_client):
+        """Cosmos DB metadata requests"""
+        return metrics_client.total_requests()
+
+    @group.command()
+    @click.pass_obj
+    @clicktools.handle_result
     def metareq(metrics_client):
         """Cosmos DB metadata requests"""
         return metrics_client.metadata_requests()

@@ -4,6 +4,12 @@ class CosmosMetrics(object):
     def __init__(self, metrics):
         self._metrics = metrics
 
+    def total_requests(self):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('TotalRequests', 'Count')
+
     def metadata_requests(self):
         """
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
