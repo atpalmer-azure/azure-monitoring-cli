@@ -34,3 +34,16 @@ def subcommands(commands):
         commands(func)
         return func
     return decorator
+
+
+def metric_command(group):
+    def decorator(func):
+        @group.command()
+        @click.option('-c', '--count', default=1)
+        @click.pass_obj
+        @handle_result
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
