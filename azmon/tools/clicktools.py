@@ -32,8 +32,5 @@ def handle_result(func):
 def subcommands(commands):
     def decorator(func):
         commands(func)
-        @functools.wraps(func)
-        def wrapper(*args, **kwargs):
-            func(*args, **kwargs)
-        return wrapper
+        return func
     return decorator
