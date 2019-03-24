@@ -12,7 +12,7 @@ DEFAULT_CONFIG = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path
 
 
 @click.group()
-@click.option('-c', '--config', default=DEFAULT_CONFIG)
+@click.option('-c', '--config', default=DEFAULT_CONFIG, envvar='AZMON_RESOURCES_CONFIG_PATH')
 @click.pass_context
 @clicktools.handle_errors
 def main(ctx, config):
