@@ -20,24 +20,22 @@ class Metrics(object):
         for item in self._client.metric_definitions.list(self._resource_id):
             print(item.name)
 
-    def list_metrics(self, metric_names, aggregation):
+    def list_metrics(self, metric_names, aggregation, *, interval='PT5M'):
         """
         valid aggregations: Average, Total, Maximum, Minimum, Count
         """
         end_time = datetime.now()
-        start_time = end_time - timedelta(hours=1)
+        start_time = end_time - timedelta(minutes=5)
 
         data = self._client.metrics.list(
             resource_uri=self._resource_id,
             timespan=f'{start_time}/{end_time}',
-            #interval='PT1H',
-            #interval='PT1M',
-            interval='PT5M',
+            interval=interval,
             metricnames=metric_names,
             aggregation=aggregation,
         )
 
-        result = [
+        result = (
             datatools.dict_clean({
                 'name': item.name.localized_value,
                 'unit': item.unit.name,
@@ -51,9 +49,9 @@ class Metrics(object):
             for item in data.value
             for ts_item in item.timeseries
             for ts_data_item in ts_item.data
-        ]
+        )
 
-        return result
+        return next(result)
 
 
 __all__ = [ Metrics, CosmosMetrics ]
