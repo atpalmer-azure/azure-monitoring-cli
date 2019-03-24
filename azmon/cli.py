@@ -20,6 +20,7 @@ def main(ctx, config):
 @click.pass_context
 @clicktools.handle_errors
 def cosmos(ctx, environment, resource):
+    """Cosmos DB commands"""
     resource_id = ctx.obj.get_resource(environment, resource)
     ctx.obj = Metrics.create_interface(
         client=get_client_from_cli_profile(MonitorManagementClient),
@@ -32,6 +33,7 @@ def cosmos(ctx, environment, resource):
 @click.pass_obj
 @clicktools.handle_errors
 def rups(metrics_client):
+    """Cosmos DB Request Units per Second"""
     result = metrics_client.ru_per_s()
     print(jsontools.dumps(result))
 
@@ -40,5 +42,6 @@ def rups(metrics_client):
 @click.pass_obj
 @clicktools.handle_errors
 def ru(metrics_client):
+    """Cosmos DB Request Units per Minute"""
     result = metrics_client.total_request_units()
     print(jsontools.dumps(result))
