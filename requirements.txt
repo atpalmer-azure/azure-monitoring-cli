@@ -1,0 +1,5 @@
+azure-mgmt-monitor
+azure-cli-core
+toml
+click
+crayons
