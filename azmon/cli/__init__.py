@@ -3,7 +3,7 @@ from azure.common.client_factory import get_client_from_cli_profile
 import click
 from ..tools import clicktools
 from ..config import ResourceConfig
-from ..core import Metrics, CosmosMetrics
+from ..metrics import Metrics, CosmosMetrics
 from .cosmos import commands as cosmos_commands
 
 
