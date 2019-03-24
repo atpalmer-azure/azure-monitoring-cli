@@ -34,3 +34,11 @@ def cosmos(ctx, environment, resource):
 def rups(metrics_client):
     result = metrics_client.ru_per_s()
     print(jsontools.dumps(result))
+
+
+@cosmos.command()
+@click.pass_obj
+@clicktools.handle_errors
+def ru(metrics_client):
+    result = metrics_client.total_request_units()
+    print(jsontools.dumps(result))
