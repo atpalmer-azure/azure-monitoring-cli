@@ -28,4 +28,5 @@ def commands(cosmos):
     @click.pass_obj
     @clicktools.handle_result
     def count(metrics_client):
+        """Cosmos DB document count"""
         return metrics_client.document_count()
