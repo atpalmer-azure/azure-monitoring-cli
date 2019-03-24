@@ -18,6 +18,12 @@ class CosmosMetrics(object):
         data = self.total_request_units()
         return [ { **item, 'RUs': item['total'] / 60 } for item in data ]
 
+    def provisioned_throughput(self):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('ProvisionedThroughput', 'Maximum')
+
     def data_usage(self):
         """
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported

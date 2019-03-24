@@ -20,6 +20,13 @@ def commands(group):
     @group.command()
     @click.pass_obj
     @clicktools.handle_result
+    def provisioned(metrics_client):
+        """Cosmos DB provisioned RU/s throughput"""
+        return metrics_client.provisioned_throughput()
+
+    @group.command()
+    @click.pass_obj
+    @clicktools.handle_result
     def data(metrics_client):
         """Cosmos DB total data usage"""
         return metrics_client.data_usage()
