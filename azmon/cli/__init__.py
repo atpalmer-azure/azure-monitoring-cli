@@ -1,3 +1,4 @@
+import os
 from azure.mgmt.monitor import MonitorManagementClient
 from azure.common.client_factory import get_client_from_cli_profile
 import click
@@ -7,8 +8,11 @@ from ..metrics import Metrics, CosmosMetrics
 from .cosmos import commands as cosmos_commands
 
 
+DEFAULT_CONFIG = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'data', 'resources.config'))
+
+
 @click.group()
-@click.option('-c', '--config', default='./resources.config')
+@click.option('-c', '--config', default=DEFAULT_CONFIG)
 @click.pass_context
 @clicktools.handle_errors
 def main(ctx, config):
