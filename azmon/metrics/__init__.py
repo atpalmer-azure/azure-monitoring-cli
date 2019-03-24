@@ -3,6 +3,13 @@ from ..tools import datatools
 from .cosmos import CosmosMetrics
 
 
+INTERVAL_TIMEDELTAS = {
+    'PT1M': timedelta(minutes=1),
+    'PT5M': timedelta(minutes=5),
+    'PT1H': timedelta(hours=1),
+}
+
+
 class Metrics(object):
     """
     See: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
@@ -20,12 +27,12 @@ class Metrics(object):
         for item in self._client.metric_definitions.list(self._resource_id):
             print(item.name)
 
-    def list_metrics(self, metric_names, aggregation, *, interval='PT5M'):
+    def list_metrics(self, metric_names, aggregation, *, interval='PT5M', count=1):
         """
         valid aggregations: Average, Total, Maximum, Minimum, Count
         """
         end_time = datetime.now()
-        start_time = end_time - timedelta(minutes=5)
+        start_time = end_time - (INTERVAL_TIMEDELTAS[interval] * count)
 
         data = self._client.metrics.list(
             resource_uri=self._resource_id,
@@ -35,7 +42,7 @@ class Metrics(object):
             aggregation=aggregation,
         )
 
-        result = (
+        result = [
             datatools.dict_clean({
                 'name': item.name.localized_value,
                 'unit': item.unit.name,
@@ -49,9 +56,9 @@ class Metrics(object):
             for item in data.value
             for ts_item in item.timeseries
             for ts_data_item in ts_item.data
-        )
+        ]
 
-        return next(result)
+        return result
 
 
 __all__ = [ Metrics, CosmosMetrics ]
