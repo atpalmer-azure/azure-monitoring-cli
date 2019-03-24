@@ -80,3 +80,11 @@ class CosmosMetrics(object):
 
         """
         return self._metrics.list_metrics('DataUsage', 'Total')
+
+    def document_count(self):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        Used to monitor document count at collection and region, minimum granularity should be 5 minutes.
+
+        """
+        return self._metrics.list_metrics('DocumentCount', 'Total')

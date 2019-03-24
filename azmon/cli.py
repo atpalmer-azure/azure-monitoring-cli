@@ -54,3 +54,11 @@ def data(metrics_client):
     """Cosmos DB total data usage"""
     result = metrics_client.data_usage()
     print(jsontools.dumps(result))
+
+
+@cosmos.command()
+@click.pass_obj
+@clicktools.handle_errors
+def count(metrics_client):
+    result = metrics_client.document_count()
+    print(jsontools.dumps(result))
