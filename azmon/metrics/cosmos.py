@@ -4,6 +4,13 @@ class CosmosMetrics(object):
     def __init__(self, metrics):
         self._metrics = metrics
 
+    def metadata_requests(self):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        Used to monitor throttles due to metadata requests.
+        """
+        return self._metrics.list_metrics('MetadataRequests', 'Count')
+
     def total_request_units(self):
         """
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
