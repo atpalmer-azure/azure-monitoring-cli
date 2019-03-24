@@ -45,3 +45,12 @@ def ru(metrics_client):
     """Cosmos DB Request Units per Minute"""
     result = metrics_client.total_request_units()
     print(jsontools.dumps(result))
+
+
+@cosmos.command()
+@click.pass_obj
+@clicktools.handle_errors
+def data(metrics_client):
+    """Cosmos DB total data usage"""
+    result = metrics_client.data_usage()
+    print(jsontools.dumps(result))
