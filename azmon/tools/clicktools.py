@@ -2,6 +2,7 @@ import functools
 import traceback
 import click
 import crayons
+from . import jsontools
 
 
 def _error(message):
@@ -16,6 +17,15 @@ def handle_errors(func):
         except Exception as e:
             _error(traceback.format_exc(limit=1))
             raise click.Abort()
+    return wrapper
+
+
+def handle_result(func):
+    @handle_errors
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print(jsontools.dumps(result))
     return wrapper
 
 

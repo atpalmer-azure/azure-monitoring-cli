@@ -1,38 +1,34 @@
 import click
-from ..tools import jsontools, clicktools
+from ..tools import clicktools
 
 
 def commands(cosmos):
     @cosmos.command()
     @click.pass_obj
-    @clicktools.handle_errors
+    @clicktools.handle_result
     def rups(metrics_client):
         """Cosmos DB Request Units per Second"""
-        result = metrics_client.ru_per_s()
-        print(jsontools.dumps(result))
+        return metrics_client.ru_per_s()
 
 
     @cosmos.command()
     @click.pass_obj
-    @clicktools.handle_errors
+    @clicktools.handle_result
     def ru(metrics_client):
         """Cosmos DB Request Units per Minute"""
-        result = metrics_client.total_request_units()
-        print(jsontools.dumps(result))
+        return metrics_client.total_request_units()
 
 
     @cosmos.command()
     @click.pass_obj
-    @clicktools.handle_errors
+    @clicktools.handle_result
     def data(metrics_client):
         """Cosmos DB total data usage"""
-        result = metrics_client.data_usage()
-        print(jsontools.dumps(result))
+        return metrics_client.data_usage()
 
 
     @cosmos.command()
     @click.pass_obj
-    @clicktools.handle_errors
+    @clicktools.handle_result
     def count(metrics_client):
-        result = metrics_client.document_count()
-        print(jsontools.dumps(result))
+        return metrics_client.document_count()
