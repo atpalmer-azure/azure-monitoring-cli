@@ -27,6 +27,13 @@ def commands(group):
     @group.command()
     @click.pass_obj
     @clicktools.handle_result
+    def index(metrics_client):
+        """Cosmos DB total data usage"""
+        return metrics_client.index_usage()
+
+    @group.command()
+    @click.pass_obj
+    @clicktools.handle_result
     def documents(metrics_client):
         """Cosmos DB document count"""
         return metrics_client.document_count()

@@ -26,6 +26,13 @@ class CosmosMetrics(object):
         """
         return self._metrics.list_metrics('DataUsage', 'Total')
 
+    def index_usage(self):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+
+        """
+        return self._metrics.list_metrics('IndexUsage', 'Total')
+
     def document_count(self):
         """
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
