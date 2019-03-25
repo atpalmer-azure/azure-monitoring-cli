@@ -8,7 +8,7 @@ from ..metrics import Metrics, CosmosMetrics
 from .cosmos import commands as cosmos_commands
 
 
-DEFAULT_CONFIG = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, 'data', 'resources.config'))
+DEFAULT_CONFIG = os.path.abspath(os.path.join(os.getenv('HOME', os.path.curdir), '.azmon', 'resources.cfg'))
 
 
 @click.group()

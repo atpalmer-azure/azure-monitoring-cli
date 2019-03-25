@@ -2,6 +2,9 @@ import os
 from setuptools import setup, find_packages
 
 
+CONFIG_INSTALL_PATH = os.path.abspath(os.path.join(os.getenv('HOME', os.path.curdir), '.azmon'))
+
+
 setup(
     name='azmon',
     author='A. Palmer',
@@ -17,5 +20,7 @@ setup(
         'click',
         'crayons',
     ],
-    package_data={ '': [ 'data/*'] },
+    data_files=[
+        (CONFIG_INSTALL_PATH, [ './config/resources.cfg' ]),
+    ],
 )
