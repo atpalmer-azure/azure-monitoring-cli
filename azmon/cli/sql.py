@@ -31,3 +31,8 @@ def commands(group):
     def deadlocks(metrics_client, **kwargs):
         """Deadlocks"""
         return metrics_client.deadlock(**kwargs)
+
+    @clicktools.metric_command(group)
+    def blocked(metrics_client, **kwargs):
+        """Blocked by firewall"""
+        return metrics_client.blocked_by_firewall(**kwargs)

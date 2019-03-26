@@ -39,3 +39,9 @@ class SqlMetrics(object):
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
         """
         return self._metrics.list_metrics('deadlock', 'Total', **kwargs)
+
+    def blocked_by_firewall(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('blocked_by_firewall', 'Total', **kwargs)
