@@ -33,3 +33,9 @@ class IotHubMetrics(object):
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
         """
         return self._metrics.list_metrics('c2d.commands.egress.reject.success', 'Total', **kwargs)
+
+    def total_devices(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('devices.totalDevices', 'Total', **kwargs)

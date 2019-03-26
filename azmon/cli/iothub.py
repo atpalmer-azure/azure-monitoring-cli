@@ -27,3 +27,8 @@ def commands(group):
     def rejected(metrics_client, **kwargs):
         """Number of cloud-to-device commands rejected by the device"""
         return metrics_client.egress_rejected(**kwargs)
+
+    @clicktools.metric_command(group)
+    def devices(metrics_client, **kwargs):
+        """Number of devices registered to your IoT hub"""
+        return metrics_client.total_devices(**kwargs)
