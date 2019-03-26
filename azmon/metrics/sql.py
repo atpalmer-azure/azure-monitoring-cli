@@ -21,3 +21,9 @@ class SqlMetrics(object):
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
         """
         return self._metrics.list_metrics('log_write_percent', 'Average', **kwargs)
+
+    def storage(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('storage', 'Maximum', **kwargs)

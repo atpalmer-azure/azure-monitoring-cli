@@ -16,3 +16,8 @@ def commands(group):
     def logio(metrics_client, **kwargs):
         """Log IO percentage"""
         return metrics_client.log_write_percent(**kwargs)
+
+    @clicktools.metric_command(group)
+    def storage(metrics_client, **kwargs):
+        """Total database size in bytes"""
+        return metrics_client.storage(**kwargs)
