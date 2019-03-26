@@ -62,10 +62,12 @@ class Metrics(object):
 
 from .cosmos import CosmosMetrics
 from .iothub import IotHubMetrics
+from .sql import SqlMetrics
 
 
 __all__ = [
     Metrics,
     CosmosMetrics,
     IotHubMetrics,
+    SqlMetrics,
 ]
