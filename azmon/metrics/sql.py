@@ -27,3 +27,9 @@ class SqlMetrics(object):
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
         """
         return self._metrics.list_metrics('storage', 'Maximum', **kwargs)
+
+    def storage_percent(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('storage_percent', 'Maximum', **kwargs)
