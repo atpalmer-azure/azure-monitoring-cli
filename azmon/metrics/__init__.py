@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from ..tools import datatools
-from .cosmos import CosmosMetrics
 
 
 INTERVAL_TIMEDELTAS = {
@@ -61,4 +60,12 @@ class Metrics(object):
         return result
 
 
-__all__ = [ Metrics, CosmosMetrics ]
+from .cosmos import CosmosMetrics
+from .iothub import IotHubMetrics
+
+
+__all__ = [
+    Metrics,
+    CosmosMetrics,
+    IotHubMetrics,
+]
