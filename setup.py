@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+from time import time
 
 
 CONFIG_INSTALL_PATH = os.path.abspath(os.path.join(os.getenv('HOME', os.path.curdir), '.azmon'))
@@ -7,6 +8,7 @@ CONFIG_INSTALL_PATH = os.path.abspath(os.path.join(os.getenv('HOME', os.path.cur
 
 setup(
     name='azmon',
+    version=int(time()),
     author='A. Palmer',
     author_email='andrew.t.palmer@parker.com',
     packages=find_packages(),
