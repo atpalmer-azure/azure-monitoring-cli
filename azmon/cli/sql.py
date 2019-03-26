@@ -26,3 +26,8 @@ def commands(group):
     def storage(metrics_client, **kwargs):
         """Total database size in bytes"""
         return metrics_client.storage_percent(**kwargs)
+
+    @clicktools.metric_command(group)
+    def deadlocks(metrics_client, **kwargs):
+        """Deadlocks"""
+        return metrics_client.deadlock(**kwargs)
