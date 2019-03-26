@@ -9,3 +9,9 @@ class IotHubMetrics(object):
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
         """
         return self._metrics.list_metrics('d2c.telemetry.ingress.allProtocol', 'Total', **kwargs)
+
+    def ingress_success(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('d2c.telemetry.ingress.success', 'Total', **kwargs)

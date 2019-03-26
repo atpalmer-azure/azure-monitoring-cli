@@ -47,3 +47,10 @@ def metric_command(group):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+
+
+def rename(name):
+    def decorator(func):
+        func.__name__ = name
+        return func
+    return decorator
