@@ -24,7 +24,7 @@ def commands(group):
 
     @clicktools.metric_command(group)
     def storage(metrics_client, **kwargs):
-        """Total database size in bytes"""
+        """Database size percentage"""
         return metrics_client.storage_percent(**kwargs)
 
     @clicktools.metric_command(group)
