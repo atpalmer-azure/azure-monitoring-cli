@@ -8,6 +8,11 @@ def commands(group):
         return metrics_client.cpu_percent(**kwargs)
 
     @clicktools.metric_command(group)
+    def dataio(metrics_client, **kwargs):
+        """Data IO percentage"""
+        return metrics_client.physical_data_read_percent(**kwargs)
+
+    @clicktools.metric_command(group)
     def logio(metrics_client, **kwargs):
         """Log IO percentage"""
         return metrics_client.log_write_percent(**kwargs)

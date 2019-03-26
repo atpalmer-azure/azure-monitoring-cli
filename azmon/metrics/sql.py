@@ -10,6 +10,12 @@ class SqlMetrics(object):
         """
         return self._metrics.list_metrics('cpu_percent', 'Average', **kwargs)
 
+    def physical_data_read_percent(self, **kwargs):
+        """
+        From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
+        """
+        return self._metrics.list_metrics('physical_data_read_percent', 'Average', **kwargs)
+
     def log_write_percent(self, **kwargs):
         """
         From: https://docs.microsoft.com/en-us/azure/azure-monitor/platform/metrics-supported
